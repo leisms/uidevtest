@@ -3,11 +3,14 @@
 
 define [
     'jquery'
-], ($, HomeView) ->
+  , 'cs!StoryList/StoryListView'
+], ($, StoryListView) ->
     MainView = Backbone.View.extend
         template: 'Main/MainTemplate'
         initialize: ->
             $('body').empty().append(@el)
+        views:
+            '.content': new StoryListView()
         events:
             # override internal links with pushstate navigation
             'click .pushState': 'pushStateNavigate'
