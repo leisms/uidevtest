@@ -27,7 +27,7 @@ define ['libs/backbone', 'libs/backbone.layoutmanager'], ->
                 fetch: (name) ->
                     # Asynchronously load template and styles for view based on root name
                     done = @async()
-                    require ["text!#{name}.hogan", "css!#{name}.css"], (template) ->
+                    require ["text!#{name}.hogan"], (template) ->
                         done (context) ->
                             Hogan.compile(template).render(context)
 
@@ -38,12 +38,12 @@ define ['libs/backbone', 'libs/backbone.layoutmanager'], ->
                 Backbone.history.start pushState: true
 
         routes: 
-            '': 'home'
+            'uidevtest/src/html/index.html': 'home'
             '*404': '404' # The asterisk catches all missed routes
         home: ->
             console.log 'Home!'
         404: ->
             console.log '404'
-            Backbone.history.navigate '/', true
+            Backbone.history.navigate 'uidevtest/src/html/index.html', true
     return start: ->
         new AppRouter()

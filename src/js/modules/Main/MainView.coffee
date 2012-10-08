@@ -3,14 +3,11 @@
 
 define [
     'jquery'
-  , 'cs!Home/HomeView'
 ], ($, HomeView) ->
     MainView = Backbone.View.extend
         template: 'Main/MainTemplate'
         initialize: ->
             $('body').empty().append(@el)
-        views:
-            '.body': new HomeView()
         events:
             # override internal links with pushstate navigation
             'click .pushState': 'pushStateNavigate'
