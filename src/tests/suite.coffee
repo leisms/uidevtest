@@ -51,6 +51,7 @@ describe "Acceptance tests:", ->
             browser.visit "http://localhost:#{port}/uidevtest/src/html/index.html", (e, browser) ->
                 try
                     expect(browser.query(".headlines"), "List of news headlines").to.exist
+                    expect(browser.queryAll ".headline").to.have.length 2
                     done()
                 catch err
                     done err
