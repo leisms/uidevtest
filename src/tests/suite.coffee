@@ -4,10 +4,12 @@
 # and Require.js for unit testing modules
 chai = require "chai"
 zombie = require "zombie"
-
-chai.Assertion.includeStack = true
-should = chai.should()
 browser = new zombie()
+
+# Include the full stacktrace in Chai assertion errors
+chai.Assertion.includeStack = true
+# Use BDD 'should' style
+should = chai.should()
 
 # Set a free port for testing
 port = process.env.PORT = 8888
@@ -16,10 +18,19 @@ port = process.env.PORT = 8888
 server = require "../app.coffee"
 
 describe "Unit tests:", ->
-    describe "Loading and parsing uidevtest-data.js", ->
-        it "should load correctly into a Backbone collection", (done) ->
-            StoryCollection = require "../js/modules/StoryCollection"
-            done()
+    describe "StoryCollection", ->
+
+        # Get an instance of the StoryCollection singleton
+        StoryCollection = (require "../js/modules/StoryCollection").getInstance()
+
+        it "fetch()", (done) ->
+            StoryCollection.url = "http://localhost:#{port}/uidevtest/src/js/assets/uidevtest-data.js"
+            StoryCollection.fetch
+                success: ->
+                    StoryCollection.models.should.have.length.above 0
+                    done()
+                error: ->
+                    done new Error "Backbone.Collection.fetch() failed"
 
 describe "Acceptance tests:", ->
     describe "User visiting /uidevtest/src/html/index.html", ->

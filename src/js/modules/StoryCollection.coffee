@@ -1,7 +1,24 @@
-# necessary boilerplate for serverside require.js testing
-backboneDir = "libs/backbone"
-if !define? then define = require("amdefine")(module); backboneDir = "backbone"
+# StoryCollection class in this function
+StoryCollection = (Backbone) ->
+	StoryCollection = Backbone.Collection.extend
+		parse: (response) ->
+			# News story models are under 'objects' in the JSON data
+			return response.objects
+	# Expose only the getInstance function
+	return getInstance: ->
+			# Use a singleton pattern for global data access
+			if not storyCollectionSingleton?
+				storyCollectionSingleton = new StoryCollection()
+			return storyCollectionSingleton
 
-define [backboneDir], (Backbone) ->
-    StoryCollection = Backbone.Collection.extend
-    return StoryCollection
+# Necessary boilerplate to get require.js working
+# on serverside for testing, as well as in browser
+if not requirejs?
+	amdefine = require('amdefine')(module)
+	amdefine ["backbone"], (Backbone) ->
+		# Satisfy dom library dependency
+		Backbone.setDomLibrary require "jquery"
+		return StoryCollection(Backbone)
+else
+	define ['libs/backbone'], (Backbone) ->
+    	return StoryCollection(Backbone)

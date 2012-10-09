@@ -16,6 +16,7 @@
       , "chai": ""
       , "zombie": ""
       , "backbone": ""
+      , "jquery": ""
       , "amdefine": ""
     }
   , "scripts": {
