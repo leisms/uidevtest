@@ -1,2 +1,5 @@
 <ul class="headlines">
+	{{#stories}}
+		<li class="headline"></li>
+	{{/stories}}
 </ul>
