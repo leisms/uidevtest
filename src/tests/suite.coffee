@@ -13,6 +13,12 @@ expect = chai.expect
 
 # Set a free port for testing
 port = process.env.PORT = 8888
+# Tell the web server that we are testing
+# so it uses dummy test data
+process.env.TESTING = true
+
+# Load the test data so we can compare
+testData = (require "fs").readFileSync "tests/assets/uidevtest-data.js", "utf-8"
 
 # Start the server
 server = require "../app.coffee"

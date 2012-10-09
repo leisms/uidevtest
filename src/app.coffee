@@ -9,7 +9,7 @@ port = process.env.PORT or 8080
 app.configure ->
     # If testing, use test data
     if process.env.TESTING
-        app.use "/uidevtest/src/js/assets/", express.static "#{__dirname}/tests/"
+        app.use "/uidevtest/src/js/assets/", express.static "#{__dirname}/tests/assets"
     app.use "/uidevtest", express.static "#{__dirname}/../"
     app.use app.router
 
