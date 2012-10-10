@@ -38,6 +38,10 @@ describe "Unit tests:", ->
                 error: ->
                     done new Error "Backbone.Collection.fetch() failed"
 
+        it "parseDate()", (done) ->
+            expect(StoryCollection.parseDate "2012-09-04T12:02:26-07:00").to.equal "3:02 p.m. Tuesday, Sep. 04, 2012"
+            done()
+
 describe "Acceptance tests:", ->
     describe "User visiting /uidevtest/src/html/index.html", ->
         it "should receive status code 200", (done) ->
@@ -61,10 +65,10 @@ describe "Acceptance tests:", ->
                     headlines = browser.queryAll ".headline"
                     for headline, i in headlines
                         expect(browser.text(".title", headline), "Title").to.equal testData.objects[i].title
-                        expect(browser.text(".picture", headline), "Picture").to.exist testData.objects[i].lead_photo_image_url
-                        expect(browser.text(".categories", headline), "Categories").to.exist testData.objects[i].categories_name
-                        expect(browser.text(".postedDate", headline), "Posted Date").to.exist testData.objects[i].pub_date
-                        expect(browser.text(".updatedDate", headline), "Updated Date").to.exist testData.objects[i].updated
+                        expect(browser.text(".picture", headline), "Picture").to.equal testData.objects[i].lead_photo_image_url
+                        expect(browser.text(".categories", headline), "Categories").to.equal testData.objects[i].categories_name
+                        expect(browser.text(".postedDate", headline), "Posted Date").to.equal testData.objects[i].pub_date
+                        expect(browser.text(".updatedDate", headline), "Updated Date").to.equal testData.objects[i].updated
                     done()
                 catch err
                     done err
