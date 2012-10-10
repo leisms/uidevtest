@@ -78,6 +78,7 @@ describe "Acceptance tests:", ->
                     browser.clickLink testData.objects[0].title, ->
                         try
                             expect(browser.location.href).to.equal "http://localhost:#{port}/uidevtest/src/html/index.html?story=sto01"
+                            done()
                         catch err
                             done err
                 catch err
