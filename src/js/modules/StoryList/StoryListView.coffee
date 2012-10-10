@@ -10,4 +10,9 @@ define [
         	@.stories.fetch()
         serialize: ->
         	return stories: @.stories.toJSON()
+        events:
+        	"click .headline .title a": "viewStory"
+        viewStory: (event) ->
+        	event.preventDefault()
+        	Backbone.history.navigate window.location.pathname + event.target.getAttribute "href"
     return StoryListView

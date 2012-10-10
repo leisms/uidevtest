@@ -19,7 +19,7 @@ define ['libs/backbone', 'libs/backbone.layoutmanager'], ->
 
             # Use Tim Branyen's excellent Backbone layout manager
             # enabling us to easily chain view rendering and also
-            # automate the loading of module templates and css
+            # automate the loading of module templates
             Backbone.LayoutManager.configure
                 # Enables layoutmanager when extending Backbone.View
                 manage: true
@@ -39,9 +39,9 @@ define ['libs/backbone', 'libs/backbone.layoutmanager'], ->
 
         routes: 
             'uidevtest/src/html/index.html': 'home'
+            'uidevtest/src/html/index.html?story=sto:storyNum': 'home'
             '*404': '404' # The asterisk catches all missed routes
         home: ->
-            console.log 'Home!'
         404: ->
             console.log '404'
             Backbone.history.navigate 'uidevtest/src/html/index.html', true

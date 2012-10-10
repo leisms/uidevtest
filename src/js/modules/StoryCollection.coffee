@@ -6,10 +6,14 @@ StoryCollection = (Backbone) ->
 		parse: (response) ->
 			# News story models are under 'objects' in the JSON data
 			stories = response.objects
-			for story in stories
+			for story, i in stories
+				# Add some render-specific fields
 				story.formatted_categories = "#{story.categories_name[0]} / #{story.categories_name[1]}"
 				story.formatted_pub_date = @parseDate story.pub_date
 				story.formatted_updated = @parseDate story.updated
+				storyNum = i + 1
+				if storyNum < 10 then storyNum = "0#{storyNum}"
+				story.story_url = "?story=sto#{storyNum}"
 			return stories
 
 		parseDate: (unixDate) ->
