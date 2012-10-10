@@ -72,3 +72,13 @@ describe "Acceptance tests:", ->
                     done()
                 catch err
                     done err
+        it "should browse to the full article when a news headline is clicked", (done) ->
+            browser.visit "http://localhost:#{port}/uidevtest/src/html/index.html", (e, browser) ->
+                try
+                    browser.clickLink testData.objects[0].title, ->
+                        try
+                            expect(browser.location.href).to.equal "http://localhost:#{port}/uidevtest/src/html/index.html?story=sto01"
+                        catch err
+                            done err
+                catch err
+                    done err
