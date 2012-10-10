@@ -20,7 +20,7 @@
       , "amdefine": ""
     }
   , "scripts": {
-        "test": "mocha --compilers coffee:coffee-script --reporter spec tests"
+        "test": "mocha --compilers coffee:coffee-script --reporter spec tests --slow 1000"
     }
   , "private": true
 }
