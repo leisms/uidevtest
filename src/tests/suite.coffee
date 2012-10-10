@@ -18,7 +18,7 @@ port = process.env.PORT = 8888
 process.env.TESTING = true
 
 # Load the test data so we can compare
-testData = (require "fs").readFileSync "tests/assets/uidevtest-data.js", "utf-8"
+testData = JSON.parse (require "fs").readFileSync "tests/assets/uidevtest-data.js", "utf-8"
 
 # Start the server
 server = require "../app.coffee"
@@ -51,20 +51,20 @@ describe "Acceptance tests:", ->
             browser.visit "http://localhost:#{port}/uidevtest/src/html/index.html", (e, browser) ->
                 try
                     expect(browser.query(".headlines"), "List of news headlines").to.exist
-                    expect(browser.queryAll ".headline").to.have.length 2
+                    expect(browser.queryAll ".headline").to.have.length testData.objects.length
                     done()
                 catch err
                     done err
         it "should see Headline Text, Picture, Categories, Posted Date and Updated Date in news headline list items", (done) ->
             browser.visit "http://localhost:#{port}/uidevtest/src/html/index.html", (e, browser) ->
                 try
-                    headlines = browser.queryAll ".headlines"
-                    headline = headlines.pop()
-                    expect(browser.query(".title", headline), "Title").to.exist
-                    expect(browser.query(".picture", headline), "Picture").to.exist
-                    expect(browser.query(".categories", headline), "Categories").to.exist
-                    expect(browser.query(".postedDate", headline), "Posted Date").to.exist
-                    expect(browser.query(".updatedDate", headline), "Updated Date").to.exist
+                    headlines = browser.queryAll ".headline"
+                    for headline, i in headlines
+                        expect(browser.text(".title", headline), "Title").to.equal testData.objects[i].title
+                        expect(browser.text(".picture", headline), "Picture").to.exist testData.objects[i].lead_photo_image_url
+                        expect(browser.text(".categories", headline), "Categories").to.exist testData.objects[i].categories_name
+                        expect(browser.text(".postedDate", headline), "Posted Date").to.exist testData.objects[i].pub_date
+                        expect(browser.text(".updatedDate", headline), "Updated Date").to.exist testData.objects[i].updated
                     done()
                 catch err
                     done err
