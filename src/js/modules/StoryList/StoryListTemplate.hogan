@@ -1,5 +1,11 @@
 <ul class="headlines">
 	{{#stories}}
-		<li class="headline"></li>
+		<li class="headline">
+			<img class="picture" src="{{lead_photo_image_url}}">
+			<h1 class="title">{{title}}</h1>
+			<p class="categories">{{formatted_categories}}</p>
+			<p class="postedDate">{{formatted_pub_date}}</p>
+			<p class="updatedDate">{{formatted_updated}}</p>
+		</li>
 	{{/stories}}
 </ul>

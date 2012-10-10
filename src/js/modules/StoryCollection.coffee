@@ -1,9 +1,17 @@
 # StoryCollection class in this function
 StoryCollection = (Backbone) ->
 	StoryCollection = Backbone.Collection.extend
+
+		# Backbone automatically calls this after fetching data
 		parse: (response) ->
 			# News story models are under 'objects' in the JSON data
-			return response.objects
+			stories = response.objects
+			for story in stories
+				story.formatted_categories = "#{story.categories_name[0]} / #{story.categories_name[1]}"
+				story.formatted_pub_date = @parseDate story.pub_date
+				story.formatted_updated = @parseDate story.updated
+			return stories
+
 		parseDate: (unixDate) ->
 			date = new Date(unixDate)
 			
@@ -27,7 +35,7 @@ StoryCollection = (Backbone) ->
 				period = "a.m."
 
 			return "#{hour}:#{minutes} #{period} #{day}, #{month}. #{dateNum}, #{year}"
-			
+
 	# Expose only the getInstance function
 	return getInstance: ->
 			# Use a singleton pattern for global data access
