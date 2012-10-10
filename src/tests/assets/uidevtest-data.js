@@ -13,7 +13,9 @@
         "story": "<p>This is a story about a test.</p>",
         "topics": ["South Test"],
         "updated": "2012-09-04T12:02:26-07:00",
-        "url_path": "/news/test"
+        "url_path": "/news/test",
+	"test_pub_date": "3:02 p.m. Tuesday, Sep. 04, 2012",
+	"test_updated": "3:02 p.m. Tuesday, Sep. 04, 2012"
     },{
         "author": ["Test McTesty"],
         "categories_name": ["Test","Another Test"],
@@ -28,6 +30,8 @@
         "story": "<p>This is a story about a test.</p>",
         "topics": ["South Test"],
         "updated": "2012-09-04T12:02:26-07:00",
-        "url_path": "/news/test"
+        "url_path": "/news/test",
+	"test_pub_date": "3:02 p.m. Tuesday, Sep. 04, 2012",
+	"test_updated": "3:02 p.m. Tuesday, Sep. 04, 2012"
     }]
 }

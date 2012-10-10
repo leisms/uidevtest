@@ -65,10 +65,10 @@ describe "Acceptance tests:", ->
                     headlines = browser.queryAll ".headline"
                     for headline, i in headlines
                         expect(browser.text(".title", headline), "Title").to.equal testData.objects[i].title
-                        expect(browser.text(".picture", headline), "Picture").to.equal testData.objects[i].lead_photo_image_url
-                        expect(browser.text(".categories", headline), "Categories").to.equal testData.objects[i].categories_name
-                        expect(browser.text(".postedDate", headline), "Posted Date").to.equal testData.objects[i].pub_date
-                        expect(browser.text(".updatedDate", headline), "Updated Date").to.equal testData.objects[i].updated
+                        expect(browser.query(".picture", headline).getAttribute "src", "Picture").to.equal testData.objects[i].lead_photo_image_url
+                        expect(browser.text(".categories", headline), "Categories").to.equal "#{testData.objects[i].categories_name[0]} / #{testData.objects[i].categories_name[1]}"
+                        expect(browser.text(".postedDate", headline), "Posted Date").to.equal testData.objects[i].test_pub_date
+                        expect(browser.text(".updatedDate", headline), "Updated Date").to.equal testData.objects[i].test_updated
                     done()
                 catch err
                     done err
