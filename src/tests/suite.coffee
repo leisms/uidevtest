@@ -99,16 +99,16 @@ describe "Acceptance tests:", ->
                 catch err
                     done err
         it "should see Headline Text, Picture, Picture Caption, Picture Credit, Article Text, Author, Posted Date and Updated Date in full article view", (done) ->
-            browser.visit "http://localhost:#{port}/uidevtest/src/html/index.html", (e, browser) ->
+            browser.visit "http://localhost:#{port}/uidevtest/src/html/index.html?story=sto01", (e, browser) ->
                 try
-                    headlines = browser.queryAll ".headline"
-                    expect(browser.text(".title", headline), "Title").to.equal testData.objects[0].title
-                    expect(browser.query(".picture", headline).getAttribute "src", "Picture").to.equal testData.objects[0].lead_photo_image_url
-                    expect(browser.text(".pictureCaption", headline), "Picture Caption").to.equal testData.objects[0].lead_photo_credit
-                    expect(browser.html(".articleText", headline), "Article Text").to.equal testData.objects[0].story
-                    expect(browser.text(".author", headline), "Author").to.equal testData.objects[0].author
-                    expect(browser.text(".postedDate", headline), "Posted Date").to.equal testData.objects[0].test_pub_date
-                    expect(browser.text(".updatedDate", headline), "Updated Date").to.equal testData.objects[0].test_updated
+                    expect(browser.text(".title"), "Title").to.equal testData.objects[0].title
+                    expect(browser.query(".picture").getAttribute "src", "Picture").to.equal testData.objects[0].lead_photo_image_url
+                    expect(browser.text(".pictureCaption"), "Picture Caption").to.equal testData.objects[0].lead_photo_caption
+                    expect(browser.text(".pictureCredit"), "Picture Credit").to.equal testData.objects[0].lead_photo_credit
+                    expect(browser.html(".articleText"), "Article Text").to.equal testData.objects[0].story
+                    expect(browser.text(".author"), "Author").to.equal testData.objects[0].author
+                    expect(browser.text(".postedDate"), "Posted Date").to.equal testData.objects[0].test_pub_date
+                    expect(browser.text(".updatedDate"), "Updated Date").to.equal testData.objects[0].test_updated
                     done()
                 catch err
                     done err
