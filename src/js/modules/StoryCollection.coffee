@@ -1,4 +1,3 @@
-# StoryCollection class in this function
 StoryCollection = (Backbone) ->
 	StoryCollection = Backbone.Collection.extend
 
@@ -41,11 +40,12 @@ StoryCollection = (Backbone) ->
 			return "#{hour}:#{minutes} #{period} #{day}, #{month}. #{dateNum}, #{year}"
 
 	# Expose only the getInstance function
-	return getInstance: ->
-			# Use a singleton pattern for global data access
-			if not storyCollectionSingleton?
-				storyCollectionSingleton = new StoryCollection()
-			return storyCollectionSingleton
+	# and use a singleton pattern for global data access
+	storyCollectionSingleton = undefined
+	return getInstance: =>
+			if not @storyCollectionSingleton?
+				@storyCollectionSingleton = new StoryCollection()
+			return @storyCollectionSingleton
 
 # Necessary boilerplate to get require.js working
 # on serverside for testing, as well as in browser

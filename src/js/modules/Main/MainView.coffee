@@ -4,13 +4,12 @@
 define [
     'jquery'
   , 'cs!StoryList/StoryListView'
-], ($, StoryListView) ->
+  , 'cs!Story/StoryView'
+], ($, StoryListView, StoryView) ->
     MainView = Backbone.View.extend
         template: 'Main/MainTemplate'
         initialize: ->
             $('body').empty().append(@el)
-        views:
-            '.content': new StoryListView()
         events:
             # override internal links with pushstate navigation
             'click .pushState': 'pushStateNavigate'
@@ -21,4 +20,10 @@ define [
             Backbone.history.navigate($(event.currentTarget).attr('href'), true)
         externalSiteNavigate: (event) ->
             #alert($(event.currentTarget).attr('href'));
+        renderStoryList: ->
+            @setView ".content", new StoryListView()
+            @render()
+        renderStory: (storyNum) ->
+            @setView ".content", new StoryView(storyNum)
+            @render()
     return MainView

@@ -83,3 +83,18 @@ describe "Acceptance tests:", ->
                             done err
                 catch err
                     done err
+    describe "User visiting /uidevtest/src/html/index.html?story=stoXX", ->
+        it "should receive status code 200", (done) ->
+            browser.visit "http://localhost:#{port}/uidevtest/src/html/index.html?story=sto01", (e, browser) ->
+                try
+                    expect(browser.statusCode).to.equal 200
+                    done()
+                catch err
+                    done err
+        it "should see a full news article", (done) ->
+            browser.visit "http://localhost:#{port}/uidevtest/src/html/index.html?story=sto01", (e, browser) ->
+                try
+                    expect(browser.query(".article"), "Article").to.exist
+                    done()
+                catch err
+                    done err
