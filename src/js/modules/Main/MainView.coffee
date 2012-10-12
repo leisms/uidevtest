@@ -26,4 +26,5 @@ define [
         renderStory: (storyNum) ->
             @setView ".content", new StoryView(storyNum)
             @render()
+            window.scrollTo 0,0
     return MainView

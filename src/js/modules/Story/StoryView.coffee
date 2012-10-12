@@ -17,4 +17,6 @@ define [
                 @render()
         serialize: ->
             return story: @story?.toJSON()
+        afterRender: ->
+            document.title = "Pawnee News Network - #{@story?.get('title')}"
     return StoryView

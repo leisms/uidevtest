@@ -16,6 +16,8 @@ define [
                 @render()
         serialize: ->
             return stories: @stories.toJSON()
+        afterRender: ->
+            document.title = "Pawnee News Network - Headlines"
         events:
             "click .headline .title a": "viewStory"
         viewStory: (event) ->
