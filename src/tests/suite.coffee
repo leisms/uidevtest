@@ -117,10 +117,10 @@ describe "Acceptance tests:", ->
                 try
                     expect(browser.query(".navBar"), "Navigation Bar").to.exist
                     expect(browser.query(".actionBar"), "Action Bar").to.exist
-                    expect(browser.query(".actionBar.comment"), "Comment Button").to.exist
-                    expect(browser.query(".actionBar.share"), "Share Button").to.exist
-                    expect(browser.query(".actionBar.favorite"), "Favorite Button").to.exist
-                    expect(browser.query(".actionBar.vote"), "Vote Button").to.exist
+                    expect(browser.query(".actionBar .comment"), "Comment Button").to.exist
+                    expect(browser.query(".actionBar .share"), "Share Button").to.exist
+                    expect(browser.query(".actionBar .favorite"), "Favorite Button").to.exist
+                    expect(browser.query(".actionBar .vote"), "Vote Button").to.exist
                     done()
                 catch err
                     done err
