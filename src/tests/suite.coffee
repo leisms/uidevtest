@@ -106,9 +106,21 @@ describe "Acceptance tests:", ->
                     expect(browser.text(".pictureCaption"), "Picture Caption").to.equal testData.objects[0].lead_photo_caption
                     expect(browser.text(".pictureCredit"), "Picture Credit").to.equal testData.objects[0].lead_photo_credit
                     expect(browser.query(".articleText").innerHTML, "Article Text").to.equal testData.objects[0].story
-                    expect(browser.text(".author"), "Author").to.equal testData.objects[0].author
+                    expect(browser.text(".author"), "Author").to.equal testData.objects[0].author[0]
                     expect(browser.text(".postedDate"), "Posted Date").to.equal testData.objects[0].test_pub_date
                     expect(browser.text(".updatedDate"), "Updated Date").to.equal testData.objects[0].test_updated
+                    done()
+                catch err
+                    done err
+        it "should see action bar with comment, share, favorite and vote buttons, and navigation bar", (done) ->
+            browser.visit "http://localhost:#{port}/uidevtest/src/html/index.html?story=sto01", (e, browser) ->
+                try
+                    expect(browser.query(".navBar"), "Navigation Bar").to.exist
+                    expect(browser.query(".actionBar"), "Action Bar").to.exist
+                    expect(browser.query(".actionBar.comment"), "Comment Button").to.exist
+                    expect(browser.query(".actionBar.share"), "Share Button").to.exist
+                    expect(browser.query(".actionBar.favorite"), "Favorite Button").to.exist
+                    expect(browser.query(".actionBar.vote"), "Vote Button").to.exist
                     done()
                 catch err
                     done err
