@@ -105,7 +105,7 @@ describe "Acceptance tests:", ->
                     expect(browser.query(".picture").getAttribute "src", "Picture").to.equal testData.objects[0].lead_photo_image_url
                     expect(browser.text(".pictureCaption"), "Picture Caption").to.equal testData.objects[0].lead_photo_caption
                     expect(browser.text(".pictureCredit"), "Picture Credit").to.equal testData.objects[0].lead_photo_credit
-                    expect(browser.html(".articleText"), "Article Text").to.equal testData.objects[0].story
+                    expect(browser.query(".articleText").innerHTML, "Article Text").to.equal testData.objects[0].story
                     expect(browser.text(".author"), "Author").to.equal testData.objects[0].author
                     expect(browser.text(".postedDate"), "Posted Date").to.equal testData.objects[0].test_pub_date
                     expect(browser.text(".updatedDate"), "Updated Date").to.equal testData.objects[0].test_updated
