@@ -2,10 +2,12 @@
 	{{#stories}}
 		<li class="headline">
 			<img class="picture" src="{{lead_photo_image_thumb}}">
-			<h2 class="title"><a href="{{story_url}}">{{title}}</a></h2>
-			<p class="categories">{{formatted_categories}}</p>
-			<p class="postedDate">{{formatted_pub_date}}</p>
-			<p class="updatedDate">{{formatted_updated}}</p>
+			<div class="info">
+				<p class="title"><a href="{{story_url}}">{{title}}</a></p>
+				<p class="categories">{{formatted_categories}}</p>
+				<p class="postedDate">{{formatted_pub_date}}</p>
+				<p class="updatedDate">{{formatted_updated}}</p>
+			</div>
 		</li>
 	{{/stories}}
 </ul>
