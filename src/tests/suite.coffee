@@ -98,3 +98,17 @@ describe "Acceptance tests:", ->
                     done()
                 catch err
                     done err
+        it "should see Headline Text, Picture, Picture Caption, Picture Credit, Article Text, Author, Posted Date and Updated Date in full article view", (done) ->
+            browser.visit "http://localhost:#{port}/uidevtest/src/html/index.html", (e, browser) ->
+                try
+                    headlines = browser.queryAll ".headline"
+                    expect(browser.text(".title", headline), "Title").to.equal testData.objects[0].title
+                    expect(browser.query(".picture", headline).getAttribute "src", "Picture").to.equal testData.objects[0].lead_photo_image_url
+                    expect(browser.text(".pictureCaption", headline), "Picture Caption").to.equal testData.objects[0].lead_photo_credit
+                    expect(browser.html(".articleText", headline), "Article Text").to.equal testData.objects[0].story
+                    expect(browser.text(".author", headline), "Author").to.equal testData.objects[0].author
+                    expect(browser.text(".postedDate", headline), "Posted Date").to.equal testData.objects[0].test_pub_date
+                    expect(browser.text(".updatedDate", headline), "Updated Date").to.equal testData.objects[0].test_updated
+                    done()
+                catch err
+                    done err
