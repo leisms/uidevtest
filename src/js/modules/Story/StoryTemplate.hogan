@@ -1,2 +1,38 @@
 <div class="article">
+    <div class="navBar">
+        <span><a href="/uidevtest/src/html/index.html">HOME</a> > <a href="/uidevtest/src/html/index.html">NEWS</a></span>
+    </div>
+    {{#story}}
+        <p class="timestamps">
+            <span class="postedDate">{{formatted_pub_date}}</span>
+            <span class="updatedDate">{{formatted_updated}}</span>
+        </p>
+        <h1 class="title">{{title}}</h1>
+        <div class="actionBar">
+            <span class="comment">
+                <a href="#">
+                    <i class="icon"></i>COMMENT</span>
+                </a>
+            <span class="share">
+                <a href="#">
+                    <i class="icon"></i>SHARE
+                </a>
+            </span>
+            <span class="favorite">
+                <a href="#">
+                    <i class="icon"></i>FAVORITE
+                </a>
+            </span>
+            <span class="vote">
+                <a href="#">
+                    <i class="icon"></i>VOTE
+                </a>
+            </span>
+        </div>
+        <img class="picture" src="{{lead_photo_image_url}}">
+        <p class="pictureCredit">{{lead_photo_credit}}</p>
+        <p class="pictureCaption">{{lead_photo_caption}}</p>
+        <p class="attribution">by <span class="author"><a href="#">{{author}}</a></span></p>
+        <div class="articleText">{{{story}}}</div>
+    {{/story}}
 </div>
