@@ -7,7 +7,7 @@
             Updated: <span class="postedDate">{{formatted_pub_date}}</span>
             | Posted: <span class="updatedDate">{{formatted_updated}}</span>
         </p>
-        <h1 class="title">{{title}}</h1>
+        <p class="title">{{title}}</p>
         <div class="actionBar">
             <span class="comment">
                 <a href="#">
@@ -29,9 +29,11 @@
                 </a>
             </span>
         </div>
-        <img class="picture" src="{{lead_photo_image_url}}">
-        <p class="pictureCredit">{{lead_photo_credit}}</p>
-        <p class="pictureCaption">{{lead_photo_caption}}</p>
+        <div class="pictureWrapper">
+            <img class="picture" src="{{lead_photo_image_url}}">
+            <p class="pictureCredit">{{lead_photo_credit}}</p>
+            <p class="pictureCaption">{{lead_photo_caption}}</p>
+        </div>
         <p class="attribution">by <span class="author"><a href="#">{{author}}</a></span></p>
         <div class="articleText">{{{story}}}</div>
     {{/story}}
