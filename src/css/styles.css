@@ -146,24 +146,24 @@ i {
 			margin-bottom: 20px;
 		}
 	.article .actionBar {
-			font-size: 11px;
-			font-weight: bold;
-			text-decoration: underline;
-		}
-		.article .actionBar i {
-			margin-right: 3px;
-			/* Grayscale image filters */
-			filter: url(filters.svg#grayscale); /* Firefox 3.5+ */
-		    filter: gray; /* IE6-9 */
-		    -webkit-filter: grayscale(1); /* Google Chrome & Safari 6+ */
-		}
-		.article .actionBar span:hover i {
-			filter: none;
-			-webkit-filter: grayscale(0);
-		}
-		.article .actionBar span {
-			margin-right: 17px;
-		}
+		font-size: 11px;
+		font-weight: bold;
+		text-decoration: underline;
+	}
+	.article .actionBar i {
+		margin-right: 3px;
+		/* Grayscale image filters */
+		filter: url(filters.svg#grayscale); /* Firefox 3.5+ */
+	    filter: gray; /* IE6-9 */
+	    -webkit-filter: grayscale(1); /* Google Chrome & Safari 6+ */
+	}
+	.article .actionBar span:hover i {
+		filter: none;
+		-webkit-filter: grayscale(0);
+	}
+	.article .actionBar span {
+		margin-right: 17px;
+	}
 
 /* Story Styles for viewport width 480px and below */
 @media (max-width: 480px) {
@@ -178,6 +178,9 @@ i {
 	.article {
 		width: inherit;
 	}
+		.article .timestamps {
+			margin-bottom: 5px;
+		}
 		.article .pictureWrapper .picture {
 			border: none;
 			margin-top: 15px;
