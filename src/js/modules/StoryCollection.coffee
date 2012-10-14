@@ -8,7 +8,10 @@ StoryCollection = (Backbone, Moment) ->
             stories = response.objects
             for story, i in stories
                 # Add some render-specific fields
-                story.formatted_categories = "#{story.categories_name[0]} / #{story.categories_name[1]}"
+                if story.categories_name[1]?
+                    story.formatted_categories = "#{story.categories_name[0]} / #{story.categories_name[1]}"
+                else
+                    story.formatted_categories = story.categories_name[0]
                 story.formatted_pub_date = @parseDate story.pub_date
                 story.formatted_updated = @parseDate story.updated
                 storyNum = i + 1
