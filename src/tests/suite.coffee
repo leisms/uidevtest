@@ -101,7 +101,7 @@ describe "Acceptance tests:", ->
         it "should see Headline Text, Picture, Picture Caption, Picture Credit, Article Text, Author, Posted Date and Updated Date in full article view", (done) ->
             browser.visit "http://localhost:#{port}/uidevtest/src/html/index.html?story=sto01", (e, browser) ->
                 try
-                    expect(browser.text(".title"), "Title").to.equal testData.objects[0].title
+                    expect(browser.text(".desktop.title"), "Title").to.equal testData.objects[0].title
                     expect(browser.query(".picture").getAttribute "src", "Picture").to.equal testData.objects[0].lead_photo_image_url
                     expect(browser.text(".pictureCaption"), "Picture Caption").to.equal testData.objects[0].lead_photo_caption
                     expect(browser.text(".pictureCredit"), "Picture Credit").to.equal testData.objects[0].lead_photo_credit
@@ -116,11 +116,11 @@ describe "Acceptance tests:", ->
             browser.visit "http://localhost:#{port}/uidevtest/src/html/index.html?story=sto01", (e, browser) ->
                 try
                     expect(browser.query(".navBar"), "Navigation Bar").to.exist
-                    expect(browser.query(".actionBar"), "Action Bar").to.exist
-                    expect(browser.query(".actionBar .comment"), "Comment Button").to.exist
-                    expect(browser.query(".actionBar .share"), "Share Button").to.exist
-                    expect(browser.query(".actionBar .favorite"), "Favorite Button").to.exist
-                    expect(browser.query(".actionBar .vote"), "Vote Button").to.exist
+                    expect(browser.query(".desktop.actionBar"), "Action Bar").to.exist
+                    expect(browser.query(".desktop.actionBar .comment"), "Comment Button").to.exist
+                    expect(browser.query(".desktop.actionBar .share"), "Share Button").to.exist
+                    expect(browser.query(".desktop.actionBar .favorite"), "Favorite Button").to.exist
+                    expect(browser.query(".desktop.actionBar .vote"), "Vote Button").to.exist
                     done()
                 catch err
                     done err
