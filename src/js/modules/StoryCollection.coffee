@@ -19,7 +19,7 @@ StoryCollection = (Backbone, Moment) ->
             return stories
 
         parseDate: (unixDate) ->
-            date = Moment(new Date unixDate)
+            date = Moment unixDate
             # Customize Moment to print out a.m./p.m. instead of am/pm
             Moment.meridiem = (hour, minute, isLower) ->
                 if hour < 12 then return "a.m." else return "p.m."
