@@ -1,3 +1,5 @@
+# View module for displaying a list of story headlines
+
 define [
     "jquery"
     "cs!StoryCollection"

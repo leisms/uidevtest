@@ -1,13 +1,13 @@
 <ul class="headlines">
-	{{#stories}}
-		<li class="headline">
-			<img class="picture" src="{{lead_photo_image_thumb}}">
-			<div class="info">
-				<p class="title"><a href="{{story_url}}">{{title}}</a></p>
-				<p class="categories">{{formatted_categories}}</p>
-				<p class="postedDate">{{formatted_pub_date}}</p>
-				<p class="updatedDate">{{formatted_updated}}</p>
-			</div>
-		</li>
-	{{/stories}}
+    {{#stories}}
+        <li class="headline">
+            <img class="picture" src="{{lead_photo_image_thumb}}">
+            <div class="info">
+                <p class="title"><a href="{{story_url}}">{{title}}</a></p>
+                <p class="categories">{{formatted_categories}}</p>
+                <p class="postedDate">{{formatted_pub_date}}</p>
+                <p class="updatedDate">{{formatted_updated}}</p>
+            </div>
+        </li>
+    {{/stories}}
 </ul>

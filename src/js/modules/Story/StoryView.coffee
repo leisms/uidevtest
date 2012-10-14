@@ -1,3 +1,5 @@
+# View module for displaying full story content
+
 define [
     "jquery"
     "cs!StoryCollection"

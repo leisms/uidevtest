@@ -24,6 +24,7 @@ require.config({
     }
 });
 define(function () {
+    // Start loading modules in CoffeeScript
     require(['cs!../AppRouter'], function (AppRouter) {
         AppRouter.start();
     });

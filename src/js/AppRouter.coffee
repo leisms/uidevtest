@@ -1,22 +1,6 @@
 define ["libs/backbone", "libs/backbone.layoutmanager"], ->
     AppRouter = Backbone.Router.extend
         initialize: ->
-            ### Google Analytics initialization code
-            window._gaq = window._gaq || []
-            window._gaq.push ["_setAccount", "YOUR GA ID"]
-            window._gaq.push ["_setDomainName", "example.com"]
-
-            require ["https://ssl.google-analytics.com/ga.js"], ->
-                window._gaq.push ["_trackPageview"]
-            ###
-            ### Mixpanel initialization code
-            require ["libs/mixpanel"], (mixpanel) ->
-                mixpanel?.init "YOUR MIXPANEL APIKEY"
-                mixpanel?.identify(mixpanel.get_property("distinct_id"))
-                if document.referrer
-                    mixpanel?.people.set("referrer", document.referrer);
-            ###
-
             # Use Tim Branyen"s excellent Backbone layout manager
             # enabling us to easily chain view rendering and also
             # automate the loading of module templates
