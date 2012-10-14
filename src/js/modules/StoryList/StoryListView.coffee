@@ -24,5 +24,5 @@ define [
             "click .headline .title a": "viewStory"
         viewStory: (event) ->
             event.preventDefault()
-            Backbone.history.navigate "#{window.location.pathname}#{event.target.getAttribute 'href'}", true
+            Backbone.history.navigate "#{event.target.getAttribute 'href'}", true
     return StoryListView

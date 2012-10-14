@@ -2,7 +2,6 @@
 
 StoryCollection = (Backbone, Moment) ->
     StoryCollection = Backbone.Collection.extend
-
         # Backbone automatically calls this after fetching data
         parse: (response) ->
             # News story models are under "objects" in the JSON data
@@ -14,7 +13,9 @@ StoryCollection = (Backbone, Moment) ->
                 story.formatted_updated = @parseDate story.updated
                 storyNum = i + 1
                 if storyNum < 10 then storyNum = "0#{storyNum}"
-                story.story_url = "?story=sto#{storyNum}"
+                # Set Window.location.href for testing
+                if not window? then window = location: pathname: "/uidevtest/src/html/index.html"
+                story.story_url = "#{window.location.pathname}?story=sto#{storyNum}"
             return stories
 
         parseDate: (unixDate) ->
