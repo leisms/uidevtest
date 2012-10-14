@@ -3,18 +3,41 @@
         <span><a class="pushState" href="/uidevtest/src/html/index.html">HOME</a>&nbsp;&nbsp;>&nbsp;&nbsp;<a class="pushState" href="/uidevtest/src/html/index.html">NEWS</a></span>
     </div>
     {{#story}}
-        <p class="title">{{title}}</p>
+        <p class="desktop title">{{title}}</p>
         <p class="timestamps">
             Updated: <span class="postedDate">{{formatted_pub_date}}</span>
             | Posted: <span class="updatedDate">{{formatted_updated}}</span>
         </p>
+        <p class="mobile title">{{title}}</p>
+        <div class="mobile actionBar">
+            <span class="comment">
+                <a href="#">
+                    <i class="iconComment"></i>COMMENT
+                </a>
+            </span>
+            <span class="share">
+                <a href="#">
+                    <i class="iconShare"></i>SHARE
+                </a>
+            </span>
+            <span class="favorite">
+                <a href="#">
+                    <i class="iconFavorite"></i>FAVORITE
+                </a>
+            </span>
+            <span class="vote">
+                <a href="#">
+                    <i class="iconVote"></i>VOTE
+                </a>
+            </span>
+        </div>
         <div class="pictureWrapper">
             <img class="picture" src="{{lead_photo_image_url}}">
             <p class="pictureCredit">{{lead_photo_credit}}</p>
             <p class="pictureCaption">{{lead_photo_caption}}</p>
         </div>
         <div class="articleWrapper">
-            <div class="actionBar">
+            <div class="desktop actionBar">
                 <span class="comment">
                     <a href="#">
                         <i class="iconComment"></i>COMMENT
