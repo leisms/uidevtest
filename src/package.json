@@ -18,6 +18,7 @@
       , "backbone": ""
       , "jquery": ""
       , "amdefine": ""
+      , "moment": ""
     }
   , "scripts": {
         "test": "mocha --compilers coffee:coffee-script --reporter spec tests --slow 1000"

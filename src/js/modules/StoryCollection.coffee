@@ -1,11 +1,11 @@
 # Collection for fetching and parsing of stories
 
-StoryCollection = (Backbone) ->
+StoryCollection = (Backbone, Moment) ->
     StoryCollection = Backbone.Collection.extend
 
         # Backbone automatically calls this after fetching data
         parse: (response) ->
-            # News story models are under 'objects' in the JSON data
+            # News story models are under "objects" in the JSON data
             stories = response.objects
             for story, i in stories
                 # Add some render-specific fields
@@ -18,28 +18,12 @@ StoryCollection = (Backbone) ->
             return stories
 
         parseDate: (unixDate) ->
-            date = new Date(unixDate)
-            
-            dateStrings = date.toLocaleDateString().split ", "
-            # toLocaleDateString() returns in format: "DAY, MONTH DATE, YEAR"
-            day = dateStrings[0]
-            month = dateStrings[1].split " "
-            year = dateStrings[2]
+            date = Moment(new Date unixDate)
+            # Customize Moment to print out a.m./p.m. instead of am/pm
+            Moment.meridiem = (hour, minute, isLower) ->
+                if hour < 12 then return "a.m." else return "p.m."
 
-            dateNum = month[1]
-            month = month[0].substr 0,3
-
-            time = date.toLocaleTimeString()
-            # time is in format "HH:MM:SS"
-            hour = parseInt time.substr 0,2
-            minutes = time.substr 3,2
-            if hour > 12
-                hour -= 12
-                period = "p.m."
-            else
-                period = "a.m."
-
-            return "#{hour}:#{minutes} #{period} #{day}, #{month}. #{dateNum}, #{year}"
+            return date.format "h:mm a dddd, MMM. DD, YYYY"
 
     # Expose only the getInstance function
     # and use a singleton pattern for global data access
@@ -52,11 +36,11 @@ StoryCollection = (Backbone) ->
 # Necessary boilerplate to get require.js working
 # on serverside for testing, as well as in browser
 if not requirejs?
-    amdefine = require('amdefine')(module)
-    amdefine ["backbone"], (Backbone) ->
+    amdefine = require("amdefine")(module)
+    amdefine ["backbone", "moment"], (Backbone, Moment) ->
         # Satisfy dom library dependency
         Backbone.setDomLibrary require "jquery"
-        return StoryCollection(Backbone)
+        return StoryCollection(Backbone, Moment)
 else
-    define ['libs/backbone'], (Backbone) ->
-        return StoryCollection(Backbone)
+    define ["libs/backbone", "libs/moment"], (Backbone, Moment) ->
+        return StoryCollection(Backbone, Moment)
